@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginScreen from './components/login.js'
-import RegisterScreen from './components/register.js';
+import Login from './Screen/login.js'
+import Register from './Screen/register.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
@@ -76,8 +76,8 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
         <Stack.Screen name="Start" component={StartScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );  
