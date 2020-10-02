@@ -1,114 +1,86 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
+import LoginScreen from './components/login.js'
+import RegisterScreen from './components/register.js';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+  Button,
+  TouchableOpacity
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
+const StartScreen = ({ navigation }) => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style = {styles.container}>
+      <View style = {styles.titleView}>
+        <Text style = {styles.title}>SOME</Text>
+      </View>
+      <View style = {styles.buttonView}>
+        <View style = {styles.buttons}>
+          <TouchableOpacity style={[styles.touchable, {backgroundColor : 'gray'}]}
+          onPress = {() => navigation.navigate('Login')}>
+            <Text style = {{color : 'black', fontWeight: 'bold'}}>LOG IN</Text>
+          </TouchableOpacity>
+        </View>
+        <View style = {styles.buttons}>
+          <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]}
+          onPress = {() => navigation.navigate('Register')}>
+          <Text style = {{color : 'white', fontWeight: 'bold'}}>REGISTER</Text>
+          </TouchableOpacity>
+         </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container : {
+    flex : 1
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  titleView : {
+    flex : 7,
+    alignItems : 'center',
+    justifyContent : 'center',
+    backgroundColor : 'skyblue'
   },
-  body: {
-    backgroundColor: Colors.white,
+  title : {
+    fontSize : 40,
+    fontWeight : 'bold'
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  buttonView : {
+    flex : 1,
+    flexDirection : 'row',
+    justifyContent : 'space-around'
+
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  buttons : {
+    flex:1,
+    justifyContent : 'center',
+    marginRight : 10,
+    marginLeft : 10
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  touchable : {
+    height: '70%',
+    marginTop: 10, 
+    justifyContent : 'center', 
+    alignItems : 'center'
+  }
 });
+
+const Stack = createStackNavigator();
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Start">
+        <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );  
+}
 
 export default App;
