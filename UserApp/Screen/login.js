@@ -1,6 +1,4 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import Main from './main.js'
 import {
   SafeAreaView,
   StyleSheet,
@@ -30,7 +28,8 @@ const LoginScreen = ({ navigation }) => {
       </View>
       <View>
         <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]}
-        onPress = {() => navigation.navigate('Main', {userId : {idValue}, userPwd : {pwdValue}})}>
+         onPress = {() => navigation.navigate('Home', {screen : 'Main', params : {userId : {idValue}, userPwd : {pwdValue}},}) }>
+        {/* onPress = {() => navigation.navigate('Home', {screen:'Main'})}> */}
           {/* 로그인 확인 절차 - db연결 후 진행 */}
           <Text style = {{color : 'white', fontWeight: 'bold'}}>LOG IN</Text>
         </TouchableOpacity>
@@ -69,14 +68,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const Stack = createStackNavigator();
-const Login = () => {
-  return (
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Main" component={Main} />
-    </Stack.Navigator>
-  );  
-}
-
-export default Login;
+export default LoginScreen;

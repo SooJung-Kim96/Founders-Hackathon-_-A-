@@ -1,6 +1,4 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import Login from './login.js'
 import {
   SafeAreaView,
   StyleSheet,
@@ -63,14 +61,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const Stack = createStackNavigator();
-const Register = () => {
-  return (
-    <Stack.Navigator initialRouteName="Register">
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="Login" component={Login} />
-    </Stack.Navigator>
-  );  
-}
-
-export default Register;
+export default RegisterScreen;
