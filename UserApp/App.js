@@ -5,9 +5,9 @@ import RegisterScreen from './Screen/register.js';
 import MainScreen from './Screen/main.js';
 import ChatScreen from './Screen/chat.js';
 import AccountScreen from './Screen/account.js';
-import HistoryScreen from './Screen/history.js';
+import HistoryScreen from './Screen/userHistory/history.js';
 import QRScreen from './Screen/qrcode.js';
-import ModalTester from './Screen/search.js';
+import payHistoryScreen from './Screen/userHistory/payHistory.js'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,10 +18,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
-        <Stack.Screen name="Start" component={StartScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Sub" component={SubMenu} />
+        <Stack.Screen name="Start" component={StartScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerTitle:''}}/>
+        <Stack.Screen name="Register" component={RegisterScreen} options={{headerTitle:''}}/>
+        <Stack.Screen name="Sub" component={SubMenu} options={{headerShown:false}}/>
+        <Stack.Screen name="payHistory" component={payHistoryScreen} options = {{headerTitle:'이용내역'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );  

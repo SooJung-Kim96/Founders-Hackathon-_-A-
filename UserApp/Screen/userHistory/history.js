@@ -1,11 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 
-const HistoryScreen = () => {
+const HistoryScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style= {styles.top}>
-        <Image source = {require('../assets/userImage.png')}
+        <Image source = {require('../../assets/userImage.png')}
         style = {styles.image}
         />
         <Text style = {styles.id}>csmoon1010</Text>
@@ -19,7 +19,8 @@ const HistoryScreen = () => {
         ]}
         renderItem={({item}) => {
           return(
-            <TouchableOpacity style={styles.chatView}>
+            <TouchableOpacity style={styles.chatView} 
+            onPress = {() => navigation.navigate('payHistory')}>
               <View>
                 <Text style={styles.keyStyle}>{item.key}</Text>
                 <Text style = {styles.valueStyle}>{item.value}</Text>
