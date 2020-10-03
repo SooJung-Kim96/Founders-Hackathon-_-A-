@@ -7,12 +7,12 @@ import {
   Text
 } from 'react-native';
 
-function ChatScreen() {
+function HistoryScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Chat</Text>
+        <Text>History</Text>
       </View>
     );
   }
 
-export default ChatScreen;
+export default HistoryScreen;

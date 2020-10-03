@@ -7,12 +7,12 @@ import {
   Text
 } from 'react-native';
 
-function ChatScreen() {
+function QRScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Chat</Text>
+        <Text>QR</Text>
       </View>
     );
   }
 
-export default ChatScreen;
+export default QRScreen;

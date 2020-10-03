@@ -27,9 +27,8 @@ const LoginScreen = ({ navigation }) => {
          <Text>{pwdValue}</Text>
       </View>
       <View>
-        <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]}
-         onPress = {() => navigation.navigate('Home', {screen : 'Main', params : {userId : {idValue}, userPwd : {pwdValue}},}) }>
-        {/* onPress = {() => navigation.navigate('Home', {screen:'Main'})}> */}
+        <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]} onPress = {() => navigation.navigate('Sub', {screen:'Home'})}>
+        {/* onPress = {() => navigation.navigate('Sub', {screen: 'Home', params :{screen : 'Main', params : {userId : {idValue}, userPwd : {pwdValue}},},} )}> */}
           {/* 로그인 확인 절차 - db연결 후 진행 */}
           <Text style = {{color : 'white', fontWeight: 'bold'}}>LOG IN</Text>
         </TouchableOpacity>

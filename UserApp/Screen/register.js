@@ -15,8 +15,8 @@ const RegisterScreen = ({ navigation }) => {
         <Text style = {styles.title}>REGISTER</Text>
       </View>
       <View style = {styles.inputView}>
-        <TextInput style = {styles.input} value = {'id'}></TextInput>
-        <TextInput style = {styles.input} value = {'pwd'}></TextInput>
+        <TextInput style = {styles.input} placeholder={'id'} ></TextInput>
+        <TextInput style = {styles.input} placeholder={'pwd'} ></TextInput>
       </View>
       <View>
         <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]}

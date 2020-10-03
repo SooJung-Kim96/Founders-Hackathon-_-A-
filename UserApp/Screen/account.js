@@ -7,12 +7,12 @@ import {
   Text
 } from 'react-native';
 
-function ChatScreen() {
+function AccountScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Chat</Text>
+        <Text>Account</Text>
       </View>
     );
   }
 
-export default ChatScreen;
+export default AccountScreen;
