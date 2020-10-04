@@ -9,9 +9,9 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-const MainScreen = ({ navigation }) => {
-    // const { userId } = route.params;
-    // const { userPwd } = route.params;
+const MainScreen = ({ route, navigation }) => {
+    const { userId } = route.params;
+    const { userPwd } = route.params;
     return (
         <SafeAreaView style = {styles.container}>
             <View style = {styles.inputView}>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   input : {
     flex:3,
-    fontSize : 20,
+    fontSize : 15,
     borderColor : 'black',
     borderWidth : 1,
     marginRight : 10
@@ -60,28 +60,10 @@ const styles = StyleSheet.create({
     color : 'black'
   },
   map : {
-    flex : 9,
+    flex : 11,
     backgroundColor : 'gray',
     marginTop : 10
   }
 });
-
-// function SettingsScreen() {
-//     return (
-//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//         <Text>Settings!</Text>
-//       </View>
-//     );
-//   }
-
-//   const Tab = createBottomTabNavigator();
-// const Main = () => {
-//   return (
-//     <Tab.Navigator>
-//         <Tab.Screen name="Main" component={MainScreen} />
-//         <Tab.Screen name="Settings" component={SettingsScreen} />
-//     </Tab.Navigator>
-//   );  
-// }
 
 export default MainScreen;

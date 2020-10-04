@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
     marginBottom : 10
   },
   title : {
-    fontSize : 40,
+    fontSize : 30,
     fontWeight : 'bold'
   },
   inputView : {
     marginBottom : 20
   },
   input : {
-    fontSize : 20,
+    fontSize : 15,
     borderColor : 'black',
     borderWidth : 1,
     marginTop : 10

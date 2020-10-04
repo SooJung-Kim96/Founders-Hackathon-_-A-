@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+var id = 'csmoon';
 const Stack = createStackNavigator();
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
         <Stack.Screen name="Start" component={StartScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Login" component={LoginScreen} options={{headerTitle:''}}/>
         <Stack.Screen name="Register" component={RegisterScreen} options={{headerTitle:''}}/>
-        <Stack.Screen name="Sub" component={SubMenu} options={{headerShown:false}}/>
+        <Stack.Screen name="Sub" component={SubMenu} options={{headerTitle:''}}/> 
+        {/* header 처리 알아보기 */}
         <Stack.Screen name="payHistory" component={payHistoryScreen} options = {{headerTitle:'이용내역'}}/>
       </Stack.Navigator>
     </NavigationContainer>
@@ -32,17 +34,17 @@ const Drawer = createDrawerNavigator();
 function SubMenu() {
   return(
     <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name = "Home" component={Home}/>
+      <Drawer.Screen name = "Home" component={Home} />
       <Drawer.Screen name = "Account" component={AccountScreen}/>
       <Drawer.Screen name = "History" component={HistoryScreen}/>
     </Drawer.Navigator>
-  )
+  );
 }
 
 const Tab = createBottomTabNavigator();
-const SearchScreenComponent = () => {
-  return null;
-}
+// const SearchScreenComponent = () => {
+//   return null;
+// }
 function Home() {
   return ( //대여 button(qr코드), serach(map api) 추가
     <Tab.Navigator tabBarOptions = {{labelStyle:{fontSize : 13}, tabStyle : {justifyContent : 'center'}} }>
@@ -53,7 +55,7 @@ function Home() {
       <Tab.Screen name = "QR" component={QRScreen}/>
       <Tab.Screen name = "Chat" component={ChatScreen}/>
     </Tab.Navigator>
-  )
+  );
 }
 
 export default App;

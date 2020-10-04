@@ -12,7 +12,7 @@ import {
 const LoginScreen = ({ navigation }) => {
   const [idValue, setIdValue] = React.useState('');
   const [pwdValue, setPwdValue] = React.useState('');
-
+  
   return (
     <SafeAreaView style = {styles.container}>
       <View style = {styles.titleView}>
@@ -27,8 +27,9 @@ const LoginScreen = ({ navigation }) => {
          <Text>{pwdValue}</Text>
       </View>
       <View>
-        <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]} onPress = {() => navigation.navigate('Sub', {screen:'Home'})}>
-        {/* onPress = {() => navigation.navigate('Sub', {screen: 'Home', params :{screen : 'Main', params : {userId : {idValue}, userPwd : {pwdValue}},},} )}> */}
+        <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]} 
+        // onPress = {() => setUserId()}>
+        onPress = {() => navigation.navigate('Sub', {screen: 'Home', params :{screen : 'Main', params : {userId : {idValue}, userPwd : {pwdValue}},},} )}>
           {/* 로그인 확인 절차 - db연결 후 진행 */}
           <Text style = {{color : 'white', fontWeight: 'bold'}}>LOG IN</Text>
         </TouchableOpacity>
@@ -47,14 +48,14 @@ const styles = StyleSheet.create({
     marginBottom : 10
   },
   title : {
-    fontSize : 40,
+    fontSize : 30,
     fontWeight : 'bold'
   },
   inputView : {
     marginBottom : 20
   },
   input : {
-    fontSize : 20,
+    fontSize : 15,
     borderColor : 'black',
     borderWidth : 1,
     marginTop : 10
