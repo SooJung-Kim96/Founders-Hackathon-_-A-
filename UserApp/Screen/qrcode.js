@@ -7,22 +7,21 @@ Platform, StyleSheet, Button} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
 //import CameraKitCameraScreen we are going to use.
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      //variable to hold the qr value
-      qrvalue : 0,
-      openScanner: false,
-    };
-  }
-  onBarcodeScan(qrvalue) {
+
+const QRScreen = ({ navigation }) => {
+  const [qrvalue, setQR] = React.useState(0);
+  const [openScanner, setScanner] = React.useState(false);
+  const [using, setUsing] = React.useState(false);
+
+  function onBarcodeScan(value) {
     //called after te successful scanning of QRCode/Barcode
-    this.setState({ qrvalue: qrvalue });
-    this.setState({ openScanner: false });
+    setQR(value);
+    setScanner(false);
+    if(using == false) setUsing(true); //컨트랙트 연결 시 수정 필요
+    else setUsing(false);
   }
-  onOpenScanner() {
-    var that =this;
+  
+  function onOpenScanner() {
     //To Start Scanning
     if(Platform.OS === 'android'){
       async function requestCameraPermission() {
@@ -35,8 +34,8 @@ export default class App extends Component {
           )
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //If CAMERA Permission is granted
-            that.setState({ qrvalue: 0 });
-            that.setState({ openScanner: true });
+            setQR(0);
+            setScanner(true);
           } else {
             alert("CAMERA permission denied");
           }
@@ -48,34 +47,65 @@ export default class App extends Component {
       //Calling the camera permission function
       requestCameraPermission();
     }else{
-      that.setState({ qrvalue: 0 });
-      that.setState({ openScanner: true });
+      setQR(0);
+      setScanner(true);
     }    
   }
-  render() {
     let displayModal;
     //If qrvalue is set then return this view
-    if (!this.state.openScanner) {
-      if(this.state.qrvalue){
-        {() => this.props.navigation.navigate('Search')}
-      }
-      return (
+    if (openScanner == false) {
+      if(qrvalue != 0){
+        return ( 
         <View style={styles.container}>
-            <Text style={styles.heading}>기기를 인식시켜주세요.</Text>
-            <Text style={styles.simpleText}>{this.state.qrvalue ? 'Scanned QR Code: '+this.state.qrvalue : ''}</Text>
+          <Text style={styles.heading}>킥보드 정보</Text>
+          <Text style={styles.simpleText}>{qrvalue != 0 ? qrvalue : ''}</Text>
+          <TouchableHighlight
+            onPress={() => {
+              navigation.navigate('lending', {
+                kickNum : qrvalue,
+                isUsing : using,
+              })
+              setQR(0);
+            }}
+            style={styles.button}>
+              <Text style={{ color: 'skyblue', fontSize: 12 }}>
+                확인
+              </Text>
+          </TouchableHighlight>
+        </View> );
+      }
+      else{
+        if(using == false){
+          return ( <View style={styles.container}>
+            <Text style={styles.heading}>대여할 킥보드를 인식시켜주세요.</Text>
             <TouchableHighlight
-              onPress={() => this.onOpenScanner()}
+              onPress={() => onOpenScanner()}
               style={styles.button}>
                 <Text style={{ color: '#FFFFFF', fontSize: 12 }}>
                 Open QR Scanner
                 </Text>
             </TouchableHighlight>
-        </View>
-      );
+          </View> );
+        }
+        else{
+          return (
+            <View style={styles.container}>
+              <Text style={styles.heading}>반납할 킥보드를 인식시켜주세요.</Text>
+              <TouchableHighlight
+                onPress={() => onOpenScanner()}
+                style={styles.button}>
+                  <Text style={{ color: '#FFFFFF', fontSize: 12 }}>
+                  Open QR Scanner
+                  </Text>
+                </TouchableHighlight>
+            </View>
+          );
+        }
+      }
     }
     return (
       <View style={styles.qrstyle}>
-        <Button title='test' onPress={() => this.onBarcodeScan(100)}/>
+        <Button title='test' onPress={() => onBarcodeScan(100)}/>
         {/* <CameraKitCameraScreen
           showFrame={true} //Show/hide scan frame
           scanBarcode={true} //Can restrict for the QR Code only
@@ -87,7 +117,6 @@ export default class App extends Component {
           }/> */}
       </View>
     );
-  }
 }
 const styles = StyleSheet.create({
   container: {
@@ -123,3 +152,5 @@ const styles = StyleSheet.create({
     height : 300
   }
 });
+
+export default QRScreen;

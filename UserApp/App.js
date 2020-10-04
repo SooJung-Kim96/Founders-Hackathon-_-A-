@@ -12,6 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import LendingScreen from './Screen/lending.js';
 
 var id = 'csmoon';
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ const App = () => {
         <Stack.Screen name="Sub" component={SubMenu} options={{headerTitle:''}}/> 
         {/* header 처리 알아보기 */}
         <Stack.Screen name="payHistory" component={payHistoryScreen} options = {{headerTitle:'이용내역'}}/>
+        <Stack.Screen name="lending" component={LendingScreen} options = {{headerTitle:'대여'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );  
