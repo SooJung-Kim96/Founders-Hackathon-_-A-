@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from "react-native"; 
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { NavigationContainer } from '@react-navigation/native';
 import {
