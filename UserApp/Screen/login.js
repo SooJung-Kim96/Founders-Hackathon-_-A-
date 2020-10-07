@@ -24,7 +24,6 @@ const LoginScreen = ({ navigation }) => {
         {/* <Text>{idValue}</Text> */}
         <TextInput style = {styles.input} placeholder = {'pwd'}
          onChangeText={text => setPwdValue(text)} value = {pwdValue}></TextInput>
-         <Text>{pwdValue}</Text>
       </View>
       <View>
         <TouchableOpacity style={[styles.touchable, {backgroundColor : 'black'}]} 

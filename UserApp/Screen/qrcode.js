@@ -105,16 +105,15 @@ const QRScreen = ({ navigation }) => {
     }
     return (
       <View style={styles.qrstyle}>
-        <Button title='test' onPress={() => onBarcodeScan(100)}/>
-        {/* <CameraKitCameraScreen
+        {<CameraKitCameraScreen
           showFrame={true} //Show/hide scan frame
           scanBarcode={true} //Can restrict for the QR Code only
           laserColor={'white'} //Color can be of your choice
           frameColor={'white'} //If frame is visible then frame color
           colorForScannerFrame={'black'} //Scanner Frame color
           onReadCode={event =>
-            this.onBarcodeScan(event.nativeEvent.codeStringValue)
-          }/> */}
+            onBarcodeScan(event.nativeEvent.codeStringValue)
+          }/> }
       </View>
     );
 }

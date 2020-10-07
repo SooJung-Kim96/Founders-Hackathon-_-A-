@@ -4,14 +4,17 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 const StartScreen = ({ navigation }) => {
   return (
     <SafeAreaView style = {styles.container}>
       <View style = {styles.titleView}>
-        <Text style = {styles.title}>SOME</Text>
+      <Image source = {require('../assets/somelogo.png')}
+        style = {styles.image}
+        />
       </View>
       <View style = {styles.buttonView}>
         <View style = {styles.buttons}>
@@ -39,11 +42,14 @@ const styles = StyleSheet.create({
     flex : 7,
     alignItems : 'center',
     justifyContent : 'center',
-    backgroundColor : 'skyblue'
+    backgroundColor : 'white'
   },
-  title : {
-    fontSize : 40,
-    fontWeight : 'bold'
+  image : {
+    width: 200, 
+    height: 100, 
+    borderRadius: 100/2,
+    backgroundColor : 'white',
+    alignContent : 'center'
   },
   buttonView : {
     flex : 1,

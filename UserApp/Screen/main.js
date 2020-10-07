@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import {Marker} from 'react-native-maps';
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,7 +23,19 @@ const MainScreen = ({ route, navigation }) => {
               </TouchableOpacity>
             </View>
             <View style = {styles.map}>
-                {/* map api 적용 영역 */}
+            <MapView style={{ flex: 1 }} 
+            provider={PROVIDER_GOOGLE} 
+            initialRegion={{ latitude: 37.78825, 
+            longitude: -122.4324, 
+            latitudeDelta: 0.0922, 
+            longitudeDelta: 0.0421, 
+              }} >
+            <Marker
+          coordinate={{latitude: 37.78825, longitude: -122.4324}}
+          title="this is a marker"
+          description="this is a marker example"
+        />
+        </MapView>
             </View>
         {/* <View style = {styles.titleView}>
             <Text style = {styles.title}>{JSON.stringify(userId)}</Text>

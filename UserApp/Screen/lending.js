@@ -23,7 +23,7 @@ const LendingScreen = ({route, navigation}) => {
     }
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>hello</Text>
+          <Text>반납되었습니다</Text>
           {/* <Button title = 'goback' onPress = {() => this.props.navigation.navigate('QR')}></Button> */}
         </View>
     );    
